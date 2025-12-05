@@ -25,6 +25,15 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 
+// 🔥 HEALTH ENDPOINT (for Render ping)
+app.get("/health", (req, res) => {
+  res.json({
+    status: "ok",
+    uptime: process.uptime(),
+    timestamp: Date.now()
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("API Working");
 });
